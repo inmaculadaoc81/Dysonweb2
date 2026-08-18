@@ -82,3 +82,31 @@
   .hero-panel::after{width:210px;height:210px;font-size:42px}
   .hero-panel .info{margin-top:110px}
 }
+
+/* ===== Chatbot n8n visible en todas las páginas ===== */
+:root{
+  --chat--color-primary:#4ab8ff;
+  --chat--color-primary-shade-50:#2f9fe8;
+  --chat--color-primary-shade-100:#188ad0;
+  --chat--color-secondary:#111522;
+  --chat--color-secondary-shade-50:#1c2232;
+  --chat--toggle--background:#4ab8ff;
+  --chat--toggle--hover--background:#2f9fe8;
+  --chat--toggle--active--background:#188ad0;
+  --chat--toggle--color:#ffffff;
+}
+#n8n-chat{
+  position:relative;
+  z-index:9999;
+}
+.n8n-chat .chat-window-toggle,
+.chat-window-toggle{
+  position:fixed !important;
+  right:22px !important;
+  bottom:22px !important;
+  z-index:10000 !important;
+}
+.floatwa{
+  bottom:92px !important;
+  z-index:9998 !important;
+}
