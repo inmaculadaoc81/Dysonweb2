@@ -39,6 +39,16 @@ REVISIÓN DE CÓDIGO:
   agrupa los 26 modelos por familia (Aspiradoras de mano, Aspiradoras de
   suelo, Secadores, Ventiladores, Purificadores, Humidificadores, Línea
   profesional) en vez de una lista plana sin organizar.
+- Quitadas las pills de categoría (Aspiradoras, Supersonic, Airwrap...)
+  del hero, por ser redundantes con las secciones de más abajo.
+- Añadida sección de contenido SEO propio (#guia), enlazada en el menú
+  de escritorio y en el móvil, con texto sobre reparar vs. comprar,
+  diagnóstico previo y catálogo trabajado.
+- Sección "Modelos" reducida: antes listaba los 26 modelos como enlaces
+  sueltos en 4 columnas; ahora son 7 tarjetas de categoría (mismo
+  formato que "Servicios") en 2 columnas, con 2-3 modelos de ejemplo por
+  categoría en vez de mencionarlos todos. El listado completo de los 26
+  sigue disponible en el desplegable "Modelos" del menú.
 - Copywriting del hero (portada), estilo problema-antes-que-servicio
   (enfoque Isra Bravo, sin copiar texto de terceros): el H1 pasó de
   "DysonTech Servicio Técnico y Reparación Dyson" (marca/servicio) a
