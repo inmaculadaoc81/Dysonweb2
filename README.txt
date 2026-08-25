@@ -4,12 +4,12 @@ Sitio multipágina grande: home + contacto + 12 páginas de servicio
 (/servicios/) + 26 páginas de modelo (/modelos/) = 40 páginas en total,
 todas comparten cabecera, chatbot n8n y footer.
 
-DOMINIO — PENDIENTE DE CONFIRMAR:
+DOMINIO:
+https://reparacionrobotaspirador.com.es/
 El sitio no tenía ningún dominio real configurado: no existía robots.txt
 ni sitemap.xml, y no había canonical ni og:url en ninguna página. Se han
-creado ambos ficheros y se ha añadido canonical/og/JSON-LD en index.html
-usando el placeholder "https://dysontech.example/", solo para no dejarlos
-vacíos. Deben actualizarse en cuanto se confirme el dominio real.
+creado ambos ficheros y se ha añadido canonical/og/JSON-LD en index.html.
+Confirmado por el cliente y aplicado en todos los ficheros.
 
 REVISIÓN DE CÓDIGO:
 - Menú móvil: no existía botón de menú (.links se ocultaba a partir de
