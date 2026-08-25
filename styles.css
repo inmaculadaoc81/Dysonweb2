@@ -104,5 +104,8 @@
 /* Fix: la regla .hero-grid añadida más abajo en el fichero pisaba el
    grid-template-columns:1fr del media query original en móvil */
 @media(max-width:950px){
-  .hero-grid{grid-template-columns:1fr}
+  .hero-grid{grid-template-columns:1fr;gap:28px}
+}
+@media(max-width:560px){
+  .hero-panel{padding-top:0}
 }
