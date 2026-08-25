@@ -1,1 +1,56 @@
-const {google}=require('googleapis');module.exports=async(req,res)=>{const ks=['GOOGLE_CLIENT_ID','GOOGLE_CLIENT_SECRET','GOOGLE_REFRESH_TOKEN','GOOGLE_EMAIL','CONTACT_EMAIL'];if(req.method==='GET')return res.status(200).json({ok:true,service:'DysonTech contacto API',node:process.version,environment:Object.fromEntries(ks.map(k=>[k,!!process.env[k]]))});if(req.method!=='POST')return res.status(405).json({ok:false});try{if(ks.some(k=>!process.env[k]))return res.status(500).json({ok:false,code:'MISSING_ENV'});const d=req.body||{};if(!d.name||!d.phone||!d.email||!d.message)return res.status(400).json({ok:false});const a=new google.auth.OAuth2(process.env.GOOGLE_CLIENT_ID,process.env.GOOGLE_CLIENT_SECRET);a.setCredentials({refresh_token:process.env.GOOGLE_REFRESH_TOKEN});await a.getAccessToken();const g=google.gmail({version:'v1',auth:a});const body=`Nombre: ${d.name}\nTeléfono: ${d.phone}\nEmail: ${d.email}\nModelo: ${d.device||'-'}\n\nConsulta:\n${d.message}`;const raw=[`From: DysonTech <${process.env.GOOGLE_EMAIL}>`,`To: ${process.env.CONTACT_EMAIL}`,`Reply-To: ${d.email}`,'Subject: Nueva consulta DysonTech','MIME-Version: 1.0','Content-Type: text/plain; charset=UTF-8','',body].join('\r\n');await g.users.messages.send({userId:'me',requestBody:{raw:Buffer.from(raw).toString('base64url')}});res.status(200).json({ok:true})}catch(e){console.error(e);res.status(500).json({ok:false,code:'EMAIL_SEND_FAILED'})}};
+const nodemailer = require('nodemailer');
+
+let cachedTransporter = null;
+function getTransporter() {
+  if (cachedTransporter) return cachedTransporter;
+  const port = Number(process.env.SMTP_PORT || 465);
+  cachedTransporter = nodemailer.createTransport({
+    host: process.env.SMTP_HOST,
+    port,
+    secure: String(process.env.SMTP_SECURE ?? (port === 465 ? 'true' : 'false')) === 'true',
+    auth: { user: process.env.SMTP_USER, pass: process.env.SMTP_PASS },
+    connectionTimeout: 15000,
+    greetingTimeout: 15000,
+    socketTimeout: 20000
+  });
+  return cachedTransporter;
+}
+
+module.exports = async (req, res) => {
+  const ks = ['SMTP_HOST', 'SMTP_PORT', 'SMTP_USER', 'SMTP_PASS'];
+
+  if (req.method === 'GET') {
+    return res.status(200).json({
+      ok: true,
+      service: 'DysonTech contacto API',
+      node: process.version,
+      environment: Object.fromEntries(ks.map((k) => [k, !!process.env[k]]))
+    });
+  }
+
+  if (req.method !== 'POST') return res.status(405).json({ ok: false });
+
+  try {
+    if (ks.some((k) => !process.env[k])) return res.status(500).json({ ok: false, code: 'MISSING_SMTP_ENV' });
+
+    const d = req.body || {};
+    if (!d.name || !d.phone || !d.email || !d.message) return res.status(400).json({ ok: false });
+
+    const body = `Nombre: ${d.name}\nTeléfono: ${d.phone}\nEmail: ${d.email}\nModelo: ${d.device || '-'}\n\nConsulta:\n${d.message}`;
+
+    const transporter = getTransporter();
+    await transporter.verify();
+    await transporter.sendMail({
+      from: `"DysonTech" <${process.env.SMTP_USER}>`,
+      to: process.env.CONTACT_EMAIL || process.env.SMTP_USER,
+      replyTo: d.email,
+      subject: 'Nueva consulta DysonTech',
+      text: body
+    });
+
+    res.status(200).json({ ok: true });
+  } catch (e) {
+    console.error(e);
+    res.status(500).json({ ok: false, code: 'SMTP_SEND_FAILED' });
+  }
+};
