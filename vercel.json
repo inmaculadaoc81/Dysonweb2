@@ -1,1 +1,1 @@
-{"cleanUrls":true,"trailingSlash":false}
+{"cleanUrls":true,"trailingSlash":false,"redirects":[{"source":"/contacto","destination":"/#contacto","permanent":true},{"source":"/contacto.html","destination":"/#contacto","permanent":true}]}
