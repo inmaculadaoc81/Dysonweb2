@@ -74,3 +74,22 @@ CONTACT_EMAIL=soporte@kelatos.com
 Las variables antiguas (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
 GOOGLE_REFRESH_TOKEN, GOOGLE_EMAIL) ya no se usan y pueden eliminarse de
 Vercel.
+
+REVISIÓN ADICIONAL (pasada posterior):
+- Google Analytics: no existía en ninguna página. Añadido G-2VR5SWEFKX
+  en las 40 páginas del sitio (home, contacto y las 38 páginas de
+  /servicios/ y /modelos/).
+- H1 acortado a formato afirmativo (≤10 palabras, sin interrogación ni
+  condicionales) — el anterior tenía 14 palabras: "Tu Dyson costó
+  caro. Aquí lo reparamos, no lo tires." No se ha tocado el tamaño del
+  H1: ya estaba en clamp(44-68px) en escritorio (en línea con el
+  estándar de la familia), y la reducción a 32px en móvil es una
+  decisión previa y documentada ("Corrige el hero en móvil: H1 más
+  pequeño...") para evitar solapes, se respeta tal cual.
+- No aplica middleware.mjs: las 38 páginas de /servicios/ y /modelos/
+  son contenido original activo, no hay eliminaciones en el historial
+  (sitio legítimamente multipágina).
+- Ya estaba bien (sin tocar): banner de cookies, schema.org, menú
+  móvil, chatbot con borde y posicionamiento correctos, teléfono, y la
+  píldora .phone de la cabecera (ya con texto corto, sin bug de
+  desbordamiento).
