@@ -75,6 +75,35 @@ Las variables antiguas (GOOGLE_CLIENT_ID, GOOGLE_CLIENT_SECRET,
 GOOGLE_REFRESH_TOKEN, GOOGLE_EMAIL) ya no se usan y pueden eliminarse de
 Vercel.
 
+REVISIÓN ADICIONAL (checklist unificado de la familia, a petición del cliente):
+- H1 verificado: "Tu Dyson costó caro. Aquí lo reparamos, no lo tires."
+  ya es afirmativo, corto y con estructura distinta a la de los repos
+  hermanos DyFix y DysonValladolid (enfoque en el coste, no en el
+  síntoma). No se ha tocado.
+- BUG REAL — el botón CTA de teléfono del hero no tenía icono, a
+  diferencia del de WhatsApp. Añadido (verificado con cuidado el
+  cierre de las etiquetas </a> en las 40 páginas: aperturas = cierres
+  en todas).
+- La casilla de política de privacidad (en contacto.html) existía pero
+  el texto no enlazaba a ningún sitio. Añadido el enlace estándar de
+  la familia a https://kelatos.com/privacy-policy/, resaltado en azul.
+- Añadida franja de aviso de servicio técnico independiente debajo del
+  menú, en las 40 páginas del sitio (home, contacto y las 38 páginas
+  de /servicios/ y /modelos/, que comparten cabecera idéntica).
+  Verificado antes que .header no usa display:flex directamente, solo
+  su .nav interno.
+- Añadido "Sábados, domingos y días festivos estamos cerrados" debajo
+  del horario, en la caja de información del hero (index.html).
+- Verificado sin bugs: no existe ninguna etiqueta rotada tipo
+  .hero-chip/.hero-tag/.hero-pill/.hero-label (el único elemento
+  rotado, .hero-panel::before, es una forma decorativa de fondo sin
+  texto de etiqueta, no una píldora); el texto decorativo
+  ".hero-panel::after" ("DYSON") es de solo 54px, no es un watermark
+  gigante y no necesita reducción; schema.org ya usaba correctamente
+  el teléfono de la caja de información (+34 910 05 48 17); el
+  formulario ya estaba correctamente conectado a /api/contact (mismo
+  nombre de archivo que api/contact.js, verificado en form.js).
+
 REVISIÓN ADICIONAL (pasada posterior):
 - Google Analytics: no existía en ninguna página. Añadido G-2VR5SWEFKX
   en las 40 páginas del sitio (home, contacto y las 38 páginas de
