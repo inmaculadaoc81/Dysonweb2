@@ -1,5 +1,30 @@
 DYSONTECH — SERVICIO TÉCNICO Y REPARACIÓN DYSON (MADRID)
 
+REVISIÓN ADICIONAL (a petición del cliente):
+- BUG REAL — "no tiene calendar para citas": no existía ninguna
+  sección de Cal.com en las 40 páginas del sitio. Añadida en
+  index.html (home), justo después de la sección "proof"
+  (Google Business / YouTube): "Reserva una cita de 30 minutos" con el
+  iframe compartido de la familia
+  (https://cal.com/kelatos/30min?embed=true&theme=light), 720px de
+  alto en escritorio y 760px en móvil. Añadido enlace "Pedir cita" al
+  menú (desktop y móvil) en las 40 páginas, ya que comparten la misma
+  cabecera.
+- SOBRE "no tiene casilla de política de privacidad en el formulario":
+  revisado el código de contacto.html y la casilla SÍ existe y SÍ
+  enlaza correctamente a https://kelatos.com/privacy-policy/ (se
+  añadió en una pasada anterior de este mismo repositorio). BUG REAL
+  DETECTADO, pero no de código: al comprobar en directo
+  https://reparacionrobotaspirador.com.es/contacto.html, el dominio
+  devuelve HTTP 404 con cabeceras de WordPress
+  (Link: .../wp-json/), es decir, ese dominio actualmente NO apunta a
+  este despliegue de Vercel, sino a otra instalación (WordPress) o no
+  está enrutado correctamente. Por eso lo que se ve en producción no
+  coincide con este repositorio. Esto no se puede corregir desde el
+  código: hay que revisar en el proveedor del dominio / en Vercel
+  (Project Settings → Domains) que reparacionrobotaspirador.com.es
+  esté correctamente apuntado a este proyecto (dysonweb2).
+
 Sitio multipágina grande: home + contacto + 12 páginas de servicio
 (/servicios/) + 26 páginas de modelo (/modelos/) = 40 páginas en total,
 todas comparten cabecera, chatbot n8n y footer.
