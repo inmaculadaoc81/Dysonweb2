@@ -1,5 +1,30 @@
 DYSONTECH — SERVICIO TÉCNICO Y REPARACIÓN DYSON (MADRID)
 
+REVISIÓN ADICIONAL (checklist unificado de la familia, a petición del cliente — repo 7/48):
+- BUG REAL — enlace de Cal.com desactualizado (solo en index.html, es
+  la única página con sección de cita). Actualizado a
+  https://cal.com/kelatos/30min?embed=true&theme=light&attendeePhoneNumber=%2B34&overlayCalendar=true.
+- Verificado: el correo soporte@kelatos.com no aparece visible en
+  ninguna de las 40 páginas.
+- BUG REAL — el mensaje prellenado de WhatsApp decía "¡Hola Kelatos!"
+  en las 40 páginas (79 apariciones en total, cabecera + hero +
+  flotante, todas comparten la misma cabecera). Corregido a "¡Hola
+  DysonTech!" en las 40 páginas mediante un script.
+- BUG REAL — el menú móvil (#mobileMenu, con atributo hidden) no tenía
+  ningún listener que lo cerrara al pulsar un enlace, en ninguna de
+  las 40 páginas (cabecera compartida). Añadido el script en las 40.
+- Verificado: sin iconos ni imágenes con proporciones fijas
+  incorrectas, ni en index.html ni en una muestra de páginas de
+  /servicios/.
+- BUG REAL — el H1 en móvil (styles.css, compartido por las 40
+  páginas) estaba en 32px, muy por debajo del estándar de 48px
+  pedido por el cliente. Corregido a 48px.
+- BUG REAL — botones del hero (.btn) con border-radius de 12px y sin
+  ningún estado hover. Aumentado a border-radius:999px; añadido
+  filter:brightness(.88) en los tres (.wa, .pick, .call — este último
+  ya tenía fondo sólido oscuro, no outline, así que el mismo
+  brightness() sirve para los tres sin necesitar un caso especial).
+
 REVISIÓN ADICIONAL (a petición del cliente):
 - BUG REAL — "no tiene calendar para citas": no existía ninguna
   sección de Cal.com en las 40 páginas del sitio. Añadida en
