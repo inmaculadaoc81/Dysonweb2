@@ -183,3 +183,38 @@ REVISIÓN ADICIONAL (nueva regla de menú móvil, 40 páginas — a petición de
   mantenía fijo/pegado arriba al hacer scroll; no requería cambios.
 - Verificado de nuevo: el checklist de 7 puntos ya estaba aplicado de
   una pasada anterior en las 40 páginas; no requería cambios.
+
+CONVERSIÓN A ONE-PAGE (a petición del cliente):
+Este repositorio era multipágina: servicios/*.html (12 páginas),
+modelos/*.html (26 páginas) y contacto.html (40 páginas en total).
+Convertido a una sola página (index.html), mismo patrón que el resto
+de la familia y que InformaticoChamberi (procesado justo antes):
+- Eliminadas las 39 páginas: servicios/ (12), modelos/ (26),
+  contacto.html. No se ha migrado su contenido — el home ya tenía la
+  sección "Servicios" (12 tarjetas con descripción) y "Modelos"
+  (resumen por familia de producto: aspiradoras de mano, de suelo,
+  secadores, ventiladores, purificadores, humidificadores, línea
+  profesional), así que la presencia de cada servicio/modelo se
+  mantiene, solo desaparece la página individual dedicada a cada uno.
+- Menú (escritorio y móvil): los desplegables "Servicios" (12
+  enlaces) y "Modelos" (26 enlaces) se sustituyeron por un enlace
+  único cada uno → /#servicios y /#modelos. "Contacto" (antes
+  /contacto.html, aparecía 3 veces: nav escritorio, nav móvil y
+  footer) ahora apunta a /#contact-form (el formulario ya presente en
+  el home; la sección no tenía id propio, se referencia directamente
+  el id del <form>).
+- Los 12 enlaces "Ver servicio →" de la sección "Servicios" (antes
+  /servicios/*.html) ahora apuntan a /#servicios.
+- Añadido middleware.mjs (mismo patrón que el resto de la familia):
+  redirige (301) cualquier URL que no sea "/" a la home. Añadida la
+  dependencia "@vercel/functions" en package.json. NOTA IMPORTANTE:
+  se comprobó en producción que este mismo patrón, ya usado en ~15
+  repos de la familia, no está redirigiendo realmente en Vercel (da
+  404 en vez de 301) — pendiente de investigar la causa raíz como
+  tarea aparte. Se mantiene por consistencia; documentado también en
+  el propio middleware.mjs.
+- sitemap.xml reducido a un único <url>: home. De paso se corrige un
+  bug que ya traía el sitemap original: la URL de servicios/servicios
+  aparecía con un backslash en vez de barra ("servicios\..."), fallo
+  heredado de generación en Windows — irrelevante ahora al quedar solo
+  la home.
