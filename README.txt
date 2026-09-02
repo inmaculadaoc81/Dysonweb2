@@ -172,3 +172,14 @@ REVISIÓN ADICIONAL (pasada posterior):
   móvil, chatbot con borde y posicionamiento correctos, teléfono, y la
   píldora .phone de la cabecera (ya con texto corto, sin bug de
   desbordamiento).
+
+REVISIÓN ADICIONAL (nueva regla de menú móvil, 40 páginas — a petición del cliente):
+- BUG REAL — la franja de aviso de independencia estaba dentro de
+  <header>, en las 40 páginas. Movida fuera de <header> en todas,
+  como hermana justo después de él y antes del script de cierre del
+  menú móvil: sigue siendo la misma franja amarilla de ancho
+  completo.
+- Verificado: el header (.header{position:sticky;top:0}) ya se
+  mantenía fijo/pegado arriba al hacer scroll; no requería cambios.
+- Verificado de nuevo: el checklist de 7 puntos ya estaba aplicado de
+  una pasada anterior en las 40 páginas; no requería cambios.
